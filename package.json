@@ -1,6 +1,6 @@
 {
     "name": "blend-cli",
-    "version": "1.5.5",
+    "version": "1.5.7",
     "description": "自动化创建（webpack+react）（webpack+vue）项目",
     "main": "index.js",
     "scripts": {
@@ -24,6 +24,7 @@
         "ora": "^2.1.0",
         "user-home": "^2.0.0"
     },
+
     "author": "陈元广",
     "license": "ISC",
     "devDependencies": {},
