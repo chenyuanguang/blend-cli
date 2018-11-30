@@ -1,0 +1,34 @@
+{
+    "name": "blend-cli",
+    "version": "1.5.5",
+    "description": "自动化创建（webpack+react）（webpack+vue）项目",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node bin/vue/vue help"
+    },
+    "preferGlobal": true,
+    "bin": {
+        "vuecli": "bin/vue/vue",
+        "vuecli-init": "bin/vue/vue-init",
+        "reactcli": "bin/react/react",
+        "reactcli-init": "bin/react/react-init",
+        "mbcli": "bin/mb/mb",
+        "mbcli-init": "bin/mb/mb-init",
+        "blend": "bin/blend"
+    },
+    "dependencies": {
+        "blend-react": "^1.0.0",
+        "commander": "^2.9.0",
+        "inquirer": "^6.0.0",
+        "ora": "^2.1.0",
+        "user-home": "^2.0.0"
+    },
+    "author": "陈元广",
+    "license": "ISC",
+    "devDependencies": {},
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/chenyuanguang/blend-cli"
+    }
+}

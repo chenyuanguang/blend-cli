@@ -1,0 +1,67 @@
+#!/usr/bin/env node
+
+
+let path = require("path")
+let fs = require("fs")
+var program = require('commander');
+const inquirer = require('inquirer')
+const home = require('user-home')
+const Ask = require("../../lib/ask")
+const fileHandle = require("../../lib/fileHandle")
+const download = require("../../lib/download")
+const resolve = require("../../lib/pathRoot").resolve
+program
+    .usage('[project-name]')
+    .parse(process.argv);
+
+
+function main() {
+    console.log(program.args[1])
+    if (program.args[1] == "[object Object]") {
+        run()
+    } else {
+        let str =
+            `
+    注意创建项目格式：
+
+
+    #创建项目：
+
+        mbcli init [project-name]
+
+    example:
+
+        mbcli init mbTest
+
+    `
+        console.log(str)
+    }
+}
+
+main()
+
+
+// 入口
+
+async function run() {
+
+    var templateReadPath = path.join(__dirname, "../../template/mb")
+    let config = await Ask(program, "mb", templateReadPath)
+    await download(templateReadPath)
+    await amendPackage(config)
+}
+
+
+
+// // 修改package.json文件
+
+function amendPackage(config) {
+    let amendConfig = {
+        name: config.name,
+        author: config.author,
+        description: config.description,
+        email: config.email,
+    }
+    console.log(amendConfig)
+    return fileHandle.amendJson(amendConfig)
+}

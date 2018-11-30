@@ -1,0 +1,63 @@
+#!/usr/bin/env node
+
+var program = require('commander');
+let Buddha = require("../../lib/Buddha.js")
+program
+    .usage('<command> [options]')
+    .command('init', '自动化创建一个简单的基于gulp的模块化项目')
+    .alias("rb")
+    .description("gulp自动化构建工具")
+    .action(() => {
+        console.log("创建一个gulp项目")
+    })
+
+program.on('--help', () => {
+
+    let useConfig = `
+
+  author：chenyuanguang
+
+  使用说明：
+
+    #查看node版本：
+
+      "必须保证node在7.3以上版本"
+
+    #
+
+    >默认使用的是commonjs进行模块开发，默认对js文件都做了common规范处理；
+    >
+    >如果使用requirejs或者不使用模块化，可以把jsModule设置为false；
+    
+    #
+    
+    >默认是css文件和sass文件全部都支持开发时可以单独使用一种；
+
+    
+    #创建项目：
+
+       mbcli init [project-name]
+
+       cd  [project-name]
+
+       npm install & cnpm install
+
+       npm start
+
+    #example:
+
+       mbcli init mbTest
+
+       cd mbTest
+
+       npm install & cnpm install
+
+       npm start
+
+    #线上打包项目：
+
+        npm run build
+`
+    console.log(useConfig)
+})
+program.parse(process.argv);

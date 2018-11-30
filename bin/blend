@@ -1,0 +1,80 @@
+#!/usr/bin/env node
+
+var program = require('commander');
+let Buddha = require("../lib/Buddha.js")
+program
+    .usage('<command> [options]')
+    .description("可以实现vue,react,基于gulp的模块化等项目的自动化搭建")
+    .action(() => {
+        console.log("创建一个项目")
+    })
+    .version('1.5.2')
+
+program.on('--help', () => {
+
+    let useConfig = `
+
+  author：chenyuanguang
+
+  使用说明：
+
+    #查看node版本：
+
+      "必须保证node在7.3以上版本"
+
+    #查询如何使用：
+
+        vuecli --help
+
+        reactcli --help
+        
+        mbcli --help
+
+    #创建项目：
+
+       react项目创建：
+       
+            #template-name:
+
+            webpack：自动集成了所有的配置，在创建项目时，以询问的方式进行项目配置
+            normal：可以添加任何一种react模板，不具备创建项目时的询问
+       
+            reactcli init <template-name> [project-name]
+
+            cd [project-name]
+
+            npm install & cnpm install
+
+            npm start
+
+       vue项目创建：
+            
+            #template-name:
+
+            webpack：自动集成了所有的配置，在创建项目时，以询问的方式进行项目配置
+            normal：可以添加任何一种react模板，不具备创建项目时的询问
+
+            vuecli init <template-name> [project-name]
+
+            cd [project-name]
+
+            npm install & cnpm install
+
+            npm start
+
+        mb项目创建(移动整合)：
+
+            mbcli init [project-name]  
+
+            cd [project-name]
+
+            npm install & cnpm install
+
+            npm start
+
+   
+`
+    console.log(useConfig)
+        // console.log(Buddha)
+})
+program.parse(process.argv);

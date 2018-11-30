@@ -1,0 +1,71 @@
+#!/usr/bin/env node
+
+var program = require('commander');
+let Buddha = require("../../lib/Buddha.js")
+program
+    .usage('<command> [options]')
+    .command('init', '自动化创建一个简单的vue项目')
+    .alias("vb")
+    .description("vue自动化工具")
+    .action(() => {
+        console.log("创建一个vue项目")
+    })
+
+
+program.on('--help', () => {
+    let useConfig = `
+
+    author：chenyuanguang
+  
+    使用说明：
+  
+      #查看node版本：
+  
+        "必须保证node在7.3以上版本"
+  
+      #创建项目：
+  
+        vuecli init <template-name> [project-name]
+
+        cd [project-name]
+
+        npm install & cnpm install
+
+        npm start
+      
+      #template-name:
+  
+         webpack：自动集成了所有的配置，在创建项目时，以询问的方式进行项目配置
+         normal：可以添加任何一种vue模板，不具备创建项目时的询问
+  
+      #example:
+  
+        vuecli init webpack vueTest
+        &
+        vuecli init normal vueTest
+
+        cd vueTest
+
+        npm install & cnpm install
+
+        npm start
+  
+      #template-name为webpack的配置说明：
+  
+          name                   项目名称
+          description            项目描述
+          author                 项目作者
+          email                  邮箱
+          device                 项目平台
+          host                   项目访问地址
+          port                   项目端口号
+          browerOpen             是否在浏览器中直接打开
+          devtool                是否使用webpack的devtool调试代码
+          cssType                是否使用sass，less进行css书写
+          mock                   是否使用mock进行接口数据的模拟
+          esLint                 是否使用esLint
+          react-project-type     使用何种模板创建项目
+  `
+    console.log(useConfig)
+})
+program.parse(process.argv);
